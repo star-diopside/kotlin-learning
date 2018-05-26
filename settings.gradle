@@ -1,3 +1,4 @@
 rootProject.name = "ktlearn"
 
-include ":sound"
+include ":sound-service"
+include ":sound-console"
