@@ -1,0 +1,39 @@
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "1.2.41" apply false
+    id "org.jetbrains.kotlin.plugin.spring" version "1.2.41" apply false
+    id "org.springframework.boot" version "2.0.2.RELEASE" apply false
+}
+
+allprojects {
+    group = "jp.gr.java_conf.stardiopside.ktlearn"
+    version = "0.0.1-SNAPSHOT"
+}
+
+subprojects {
+    apply plugin: "kotlin"
+    apply plugin: "kotlin-spring"
+    apply plugin: "io.spring.dependency-management"
+
+    sourceCompatibility = JavaVersion.VERSION_1_9
+    targetCompatibility = JavaVersion.VERSION_1_9
+
+    compileKotlin {
+        kotlinOptions {
+            freeCompilerArgs = ["-Xjsr305=strict"]
+            jvmTarget = "1.8"
+        }
+    }
+
+    repositories {
+        jcenter()
+    }
+}
+
+project(":sound") {
+    apply plugin: "org.springframework.boot"
+
+    dependencies {
+        implementation "org.springframework.boot:spring-boot-starter"
+        testImplementation "org.springframework.boot:spring-boot-starter-test"
+    }
+}
